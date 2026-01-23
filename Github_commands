@@ -17,6 +17,14 @@ Create a new branch with <name>
 git push origin <name> 
 Push the new branch to GitHub
 
+Deleting a Branch
+git checkout main
+Move off of to-be-deleted branch
+git branch -d <name>
+Safe deletion of <name>. Will not delete if unmerged changes. -D forces deletion. 
+git push origin --delete <name>
+Delete branch from GitHub.  
+
 Update Local Respository
 Navigate to the correct repository
 cd /path/to/your/local/repo
@@ -35,8 +43,18 @@ git commit -m "Description of your changes"
 Push the changes
 git push origin main
 
-Remove a commit
+Remove a Commit
 git rebase -i HEAD~2
 Then in vim, change "pick" to "d" or "drop", save the file, then 
 git push -f
 
+Resolve a Merge Conflict
+git status
+List files under unmerged status
+***Manually edit the conflicted files and look for the conflict markers (lines with <<<<<<< HEAD, =======, and >>>>>>>). Decide which version of the code to keep, then remove the markers.
+git add <filename>
+Stage the resolved file
+git commit -m "Resolved merge conflicts and committed changes"
+Finalize the merge locally. 
+git pull
+Pull again. 
