@@ -17,14 +17,6 @@ Create a new branch with <name>
 git push origin <name> 
 Push the new branch to GitHub
 
-Delete A Branch
-git checkout main
-Move off of branch to main
-git branch -d <name>
-Safe deletion of <name>. Will not work if unmerged changes present. -D forces the deletion
-git push origin -d <name>
-Deletes branch upstream on GitHub 
-
 Update Local Respository
 Navigate to the correct repository
 cd /path/to/your/local/repo
