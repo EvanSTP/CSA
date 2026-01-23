@@ -1,0 +1,50 @@
+Username: EvanSTP
+
+Set up account
+git config --global user.name "EvanSTP"
+git config --global user.email "evannm.hill@gmail.com"
+
+Clone Repository
+git clone https://github.com/EvanSTP/<repository-name>.git
+
+Branching
+git status 
+List your current branch
+git branch
+Lists all branches
+git branch <name>
+Create a new branch with <name>
+git push origin <name> 
+Push the new branch to GitHub
+
+Delete A Branch
+git checkout main
+Move off of branch to main
+git branch -d <name>
+Safe deletion of <name>. Will not work if unmerged changes present. -D forces the deletion
+git push origin -d <name>
+Deletes branch upstream on GitHub 
+
+Update Local Respository
+Navigate to the correct repository
+cd /path/to/your/local/repo
+Check you are on the correct branch (main vs master)
+git checkout main
+Pull the changes
+git pull origin main
+# or git pull
+
+Send Changes Back
+Stage the changes
+git add . 
+# or git add <specific-file>
+Commit the changes
+git commit -m "Description of your changes"
+Push the changes
+git push origin main
+
+Remove a commit
+git rebase -i HEAD~2
+Then in vim, change "pick" to "d" or "drop", save the file, then 
+git push -f
+
