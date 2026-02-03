@@ -14,7 +14,7 @@
 
     <script>
         // Replace with your Google Sheets "Publish to the web" CSV link
-        var googleSheetCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQXc8ZwbOdmfKvt8ZJs_zbW3eLnD5bSQ8zWE4VMxEOpwPvWqownusyLZs3Q0REgkv82lbicC_vYKHSF/pub?gid=0&single=true&output=csv"; 
+        var googleSheetCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQXc8ZwbOdmfKvt8ZJs_zbW3eLnD5bSQ8zWE4VMxEOpwPvWqownusyLZs3Q0REgkv82lbicC_vYKHSF/pubhtml"; 
 
         $(document).ready(function() {
             Papa.parse(googleSheetCSV, {
@@ -25,7 +25,7 @@
                     // Example: access the first row, "Column1" value
                     // Replace 'Column1' with your actual column header name (from the first row)
                     if (data.length > 0) {
-                        var firstRowValue = data[0].a; 
+                        var firstRowValue = data[0].1; 
                         $('#output').text(firstRowValue);
                     } else {
                         $('#output').text("No data found or error parsing.");
