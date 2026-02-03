@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Sheets Data Fetch</title>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com"></script>
+    <!-- Include Papa Parse Library (can also be a local file) -->
+    <script src="https://cdnjs.cloudflare.com"></script>
+</head>
+<body>
+
+    <h1>Data from Google Sheet:</h1>
+    <p>Value from A1: <strong id="output"></strong></p>
+
+    <script>
+        // Replace with your Google Sheets "Publish to the web" CSV link
+        var googleSheetCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQXc8ZwbOdmfKvt8ZJs_zbW3eLnD5bSQ8zWE4VMxEOpwPvWqownusyLZs3Q0REgkv82lbicC_vYKHSF/pub?gid=0&single=true&output=csv"; 
+
+        $(document).ready(function() {
+            Papa.parse(googleSheetCSV, {
+                download: true,
+                header: true, // Assuming the first row is a header
+                complete: function(results) {
+                    var data = results.data;
+                    // Example: access the first row, "Column1" value
+                    // Replace 'Column1' with your actual column header name (from the first row)
+                    if (data.length > 0) {
+                        var firstRowValue = data[0].a; 
+                        $('#output').text(firstRowValue);
+                    } else {
+                        $('#output').text("No data found or error parsing.");
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
