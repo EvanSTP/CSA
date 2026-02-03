@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Google Sheets Data Fetch</title>
-    <!-- Include jQuery -->
-    <script src="https://code.jquery.com"></script>
-    <!-- Include Papa Parse Library (can also be a local file) -->
-    <script src="https://cdnjs.cloudflare.com"></script>
+    <title>Pull Cell Value</title>
 </head>
 <body>
 
-    <h1>Data from Google Sheet:</h1>
-    <p>Value from A1: <strong id="output"></strong></p>
+    <h2>Value from Cell A2:</h2>
+    <div id="cell-value">Loading...</div>
 
     <script>
-        // Replace with your Google Sheets "Publish to the web" CSV link
-        var googleSheetCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQXc8ZwbOdmfKvt8ZJs_zbW3eLnD5bSQ8zWE4VMxEOpwPvWqownusyLZs3Q0REgkv82lbicC_vYKHSF/pubhtml"; 
+        // Replace with your actual Sheet ID
+        const sheetId = '1m6l6CyVdEtUPYgEpAJkC8Z-UoIzUpCOZbiA-tspXRoY';
+        // Specify the range (A1:A1 for just one cell)
+        const range = 'A2:A2'; 
+        
+        const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&range=${range}`;
 
-        $(document).ready(function() {
-            Papa.parse(googleSheetCSV, {
-                download: true,
-                header: true, // Assuming the first row is a header
-                complete: function(results) {
-                    var data = results.data;
-                    // Example: access the first row, "Column1" value
-                    // Replace 'Column1' with your actual column header name (from the first row)
-                    if (data.length > 0) {
-                        var firstRowValue = data[0].1; 
-                        $('#output').text(firstRowValue);
-                    } else {
-                        $('#output').text("No data found or error parsing.");
-                    }
-                }
-            });
-        });
+        async function fetchCellValue() {
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                
+                // The API returns a weird prefix "/* google.visualization.Query.setResponse(...); */"
+                // We need to slice that off to get valid JSON
+                const jsonData = JSON.parse(text.substring(47).slice(0, -2));
+                
+                // Navigate the JSON tree to get the cell value
+                const value = jsonData.table.rows[0].c[0].v;
+                
+                document.getElementById('cell-value').innerText = value;
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                document.getElementById('cell-value').innerText = "Error loading data.";
+            }
+        }
+
+        fetchCellValue();
     </script>
-
 </body>
 </html>
