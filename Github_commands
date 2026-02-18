@@ -13,9 +13,15 @@ List your current branch
 git branch
 Lists all branches
 git branch <name>
+List all files in current branch
+git ls-files 
+List all files in specific branch
+git ls-tree -r <name> --name-only
 Create a new branch with <name>
 git push origin <name> 
 Push the new branch to GitHub
+git checkout <source-branch-name> -- <path/to/file>
+Copy a file to the new branch
 
 Deleting a Branch
 git checkout main
