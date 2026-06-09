@@ -3,9 +3,28 @@ Username: EvanSTP
 Set up account
 git config --global user.name "EvanSTP"
 git config --global user.email "evannm.hill@gmail.com"
+git config --global init.defaultBranch main
+
+Generate and Add an SSH Key:
+ssh-keygen -t ed25519 -C "your_email@example.com"
+Generate a new key
+eval "$(ssh-agent -s)"
+Start the SSH agent
+ssh-add ~/.ssh/id_ed25519
+Add your private key to the agent
+cat ~/.ssh/id_ed25519.pub
+View and copy your public key
+***Go to GitHub Settings, click New SSH Key, give it a title (like "Raspberry Pi 5"), paste the copied key text, and save.
+Add to Github
+https://docs.github.com/en/authentication/troubleshooting-ssh/using-ssh-over-the-https-port
+Troubleshooting HTTP vs SSH issue
+
 
 Clone Repository
 git clone https://github.com/EvanSTP/<repository-name>.git
+
+git clone ssh://git@ssh.github.com:443/EvanSTP/YOUR-REPOSITORY.git
+Using SSH
 
 Branching
 git status 
