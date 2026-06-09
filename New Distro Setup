@@ -1,0 +1,14 @@
+Installing BME280 Library
+sudo apt update && sudo apt install python3-bme280
+
+Installing IDLE
+sudo apt update && sudo apt install idle3
+
+Installing Neo
+git clone https://github.com/st3w/neo.git
+sudo apt update && sudo apt install autoconf automake libtool
+sudo apt-get install libncurses-dev
+./autogen.sh
+./configure
+make -j3
+sudo make install
