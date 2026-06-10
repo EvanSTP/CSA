@@ -1,14 +1,14 @@
 #!/usr/bin/env python3.0
 #Conditioned Suppression/Avoidance Program for assessing hearing
-#Uses servo to dispense food
+#Complete overhaul of the original project
 #Checkbox toggle for sound trial training and testing
-#7/24/2024 by Evan Hill
+#6//2026 by Evan Hill
 
 import time, random
 import RPi.GPIO as GPIO
 from tkinter import *
 from tkinter.messagebox import *
-from adafruit_servokit import ServoKit
+#from adafruit_servokit import ServoKit
 
 
 GPIO.setmode(GPIO.BCM)
@@ -17,9 +17,9 @@ master = Tk()
 
 master.title("Behavioral Audiogram - Conditioned Suppression/Avoidance") #labels window
 
-kit=ServoKit(channels=16)
-kit.servo[0].set_pulse_width_range(550,2850)
-kit.servo[0].actuation_range=190
+#kit=ServoKit(channels=16)
+#kit.servo[0].set_pulse_width_range(550,2850)
+#kit.servo[0].actuation_range=190
 
 reward_count = 0 #number of rewards dispensed
 wp_count = 0 #warning peck counter
