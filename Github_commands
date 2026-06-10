@@ -1,5 +1,7 @@
 Username: EvanSTP
 
+Hello world! 
+
 Set up account
 git config --global user.name "EvanSTP"
 git config --global user.email "evannm.hill@gmail.com"
